@@ -1,4 +1,0 @@
-[core]
-    remote = origin
-['remote "origin"']
-    url = https://dagshub.com/johnelhachem/mlops-lab-1.dvc
