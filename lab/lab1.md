@@ -1,5 +1,15 @@
 # Lab 1
 
+## Solution adopted for the DVC data issue
+
+I adopted **Solution 2: Reduce the data folder size**.
+
+Because uploading the complete Food-11 dataset to DagsHub caused technical difficulties, I kept the full dataset locally in a separate `data_full/` folder and added it to `.gitignore`.
+
+The `data/` folder contains only a small sample while keeping the required `training`, `evaluation`, and `validation` structure. This smaller dataset was tracked using DVC and successfully pushed to DagsHub. The processed and mini datasets were then generated from this sample and tracked through the updated `data.dvc` file.
+
+---
+
 ## Question 1 — What do the files created by `uv init` contain?
 
 When `uv init` is executed, it creates the initial structure needed for a Python project.
@@ -61,7 +71,7 @@ This prevents Git from treating the actual dataset files as regular files that s
 
 ## Question 5 — What is the `.dvc` file?
 
-When `dvc add data` is executed, DVC creates a file called **`data.dvc`**.
+When `dvc add data` is executed, DVC creates a file called `data.dvc`.
 
 It acts as a pointer describing the version of the `data` directory being tracked. It contains information such as:
 
@@ -86,14 +96,17 @@ This small pointer file is committed to Git instead of the actual images. When t
 
 The project's source code and configuration files are available on GitHub, including the Python source files, project configuration, README, and DVC metadata.
 
-The actual `data` directory is not stored directly in GitHub. Instead, GitHub contains the **`data.dvc`** file, which acts as a pointer to the dataset managed by DVC.
+The actual `data` directory is not stored directly in GitHub. Instead, GitHub contains the `data.dvc` file, which acts as a pointer to the dataset managed by DVC.
 
-The actual dataset is stored in the DVC remote on DagsHub. Therefore, GitHub contains the code and dataset pointer, while DagsHub contains the data itself.
+The small sample dataset was successfully pushed to the DagsHub DVC remote using `dvc push`, so the actual DVC-managed data is stored there.
+
+The complete Food-11 dataset is kept locally in `data_full/` and is listed in `.gitignore`, so it is not uploaded to GitHub.
 
 **In simple terms:**
 
-**GitHub →** source code + DVC metadata/pointers
-**DagsHub →** actual dataset files
+**GitHub →** source code + DVC pointer and configuration
+**DagsHub →** small DVC-tracked dataset
+**Laptop →** complete `data_full` dataset
 
 ---
 
@@ -144,4 +157,4 @@ dvc checkout
 
 The processed folders then reappear because the `main` branch contains the newer `data.dvc` version.
 
-**This demonstrates the relationship between Git and DVC:** Git controls the version of the project and its DVC pointer, while DVC restores the corresponding version of the actual data.
+This demonstrates the relationship between Git and DVC: Git controls the version of the project and its DVC pointer, while DVC restores the corresponding version of the actual data.
