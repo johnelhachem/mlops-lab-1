@@ -3,3 +3,6 @@
 data_full/
 mlflow.db
 mlruns/
+
+__pycache__/
+*.pyc
