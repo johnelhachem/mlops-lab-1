@@ -6,3 +6,5 @@ mlruns/
 
 __pycache__/
 *.pyc
+
+mlartifacts/
