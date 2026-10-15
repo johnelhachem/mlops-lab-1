@@ -8,3 +8,4 @@ __pycache__/
 *.pyc
 
 mlartifacts/
+mlflow-lab4-backup.tar.gz
