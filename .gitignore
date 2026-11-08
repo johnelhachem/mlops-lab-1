@@ -9,3 +9,5 @@ __pycache__/
 
 mlartifacts/
 mlflow-lab4-backup.tar.gz
+
+/local-backups/
