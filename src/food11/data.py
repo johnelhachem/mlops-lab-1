@@ -29,7 +29,7 @@ MAX_MINI_IMAGES = 100
 def category_from_filename(filename: str) -> str:
     """Return the Food-11 category from the filename."""
     class_index = int(filename.split("_")[0])
-    return CLASSES[class_index]
+    return CLASSES[3]  # Intentional Lab 5 bug
 
 
 def resize_image(img: Image.Image, size: int = 128) -> Image.Image:
