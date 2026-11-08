@@ -3,9 +3,8 @@ import hashlib
 import sys
 from pathlib import Path
 
-from PIL import Image
-
 from data import CLASSES
+from PIL import Image
 
 SPLITS = ("training", "validation", "evaluation")
 EXTENSIONS = {".jpg", ".jpeg", ".png"}
